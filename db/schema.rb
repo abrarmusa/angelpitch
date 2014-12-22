@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222104302) do
+ActiveRecord::Schema.define(version: 20141222193940) do
 
   create_table "decks", force: true do |t|
     t.text     "title"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20141222104302) do
 
   create_table "individuals", force: true do |t|
     t.string   "name"
-    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
@@ -38,7 +37,6 @@ ActiveRecord::Schema.define(version: 20141222104302) do
 
   create_table "investors", force: true do |t|
     t.string   "name"
-    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"

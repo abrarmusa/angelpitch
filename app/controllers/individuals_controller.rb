@@ -4,8 +4,6 @@ class IndividualsController < ApplicationController
   respond_to :html
 
   def index
-    @individuals = Individual.all
-    respond_with(@individuals)
   end
 
   def show
@@ -14,7 +12,9 @@ class IndividualsController < ApplicationController
 
   def new
     @individual = Individual.new
-    respond_with(@individual)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def edit
@@ -23,7 +23,9 @@ class IndividualsController < ApplicationController
   def create
     @individual = Individual.new(individual_params)
     @individual.save
-    respond_with(@individual)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
@@ -42,6 +44,6 @@ class IndividualsController < ApplicationController
     end
 
     def individual_params
-      params.require(:individual).permit(:name, :email, user_attributes: [ :id, :email, :name, :password ])
+      params.require(:individual).permit(:name, :avatar, user_attributes: [ :id, :email, :name, :password ])
     end
 end

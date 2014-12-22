@@ -42,6 +42,6 @@ class InvestorsController < ApplicationController
     end
 
     def investor_params
-      params.require(:investor).permit(:name, :email, user_attributes: [ :id, :email, :name, :password ])
+      params.require(:investor).permit(:name, :avatar, user_attributes: [ :id, :email, :name, :password ])
     end
 end

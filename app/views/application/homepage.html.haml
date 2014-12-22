@@ -6,14 +6,17 @@
       <br>
       .col-md-6
         .panel.panel-default
-          .panel-body
+          .panel-body.moneybackground
             .centerize
               %h2 I am an
-
-              %button.btn.btn-primary.btn-lg 
-                <br>
-                Angel/VC
-                <br><br>
+ 
+                
+              
+              =link_to new_individual_path, { remote: true, "data-toggle" => "modal", "data-target" => "#individualmodal"} do
+                .btn.btn-primary.btn-lg
+                  <br>
+                  New Individual
+                  <br><br>
       .col-md-6
         .panel.panel-default
           .panel-body
@@ -25,3 +28,5 @@
                 <br>
                 Startup
                 <br><br>
+
+=render "/individuals/individualmodal"
