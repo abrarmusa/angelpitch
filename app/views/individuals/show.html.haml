@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @individual.name
+%p
+  %b Email:
+  = @individual.email
+
+= link_to 'Edit', edit_individual_path(@individual)
+\|
+= link_to 'Back', individuals_path

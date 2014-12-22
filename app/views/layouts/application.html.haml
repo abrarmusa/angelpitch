@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %title ANGELPITCH
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = favicon_link_tag 'favicon.ico'
+  %body
+    %p.notice= notice
+    %p.alert= alert
+
+  #wrapper
+    / Navigation
+    %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+      / Brand and toggle get grouped for better mobile display
+      .navbar-header
+        %a.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        -# %a.navbar-brand Angelpitch
+        .row
+          = image_tag("logo.png", width: "50", style: "float:left;margin-left:15px;padding-top:15px;padding-bottom:15px;padding-left:15px;")
+          %h1.navbar-brand ANGELPITCH
+      / Top Menu Items
+
+    / Sidebar
+  = yield

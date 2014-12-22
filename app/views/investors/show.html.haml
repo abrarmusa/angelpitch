@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @investor.name
+%p
+  %b Email:
+  = @investor.email
+
+= link_to 'Edit', edit_investor_path(@investor)
+\|
+= link_to 'Back', investors_path

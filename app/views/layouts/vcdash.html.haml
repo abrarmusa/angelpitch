@@ -1,0 +1,84 @@
+!!!
+%html
+  %head
+    %title ANGELPITCH
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = favicon_link_tag 'favicon.ico'
+  %body
+
+  #wrapper
+    / Navigation
+    %nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+      / Brand and toggle get grouped for better mobile display
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        -# %a.navbar-brand Angelpitch
+        .row
+          = image_tag("logo.png", width: "50", style: "float:left;margin-left:15px;padding-top:15px;padding-bottom:15px;padding-left:15px;")
+          %h1.navbar-brand ANGELPITCH
+      / Top Menu Items
+      %ul.nav.navbar-right.top-nav
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.fa.fa-user
+            John Smith
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-fw.fa-user
+                Profile
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-fw.fa-envelope
+                Inbox
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-fw.fa-gear
+                Settings
+            %li.divider
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-fw.fa-power-off
+                Log Out
+    / Sidebar
+    #sidebar-wrapper
+      %ul.sidebar-nav
+        %li.sidebar-brand
+          %a{:href => "#"}
+            Start Bootstrap
+        %li
+          %a{:href => "#"} Dashboard
+        %li
+          %a{:href => "#"} Shortcuts
+        %li
+          %a{:href => "#"} Overview
+        %li
+          %a{:href => "#"} Events
+        %li
+          %a{:href => "#"} About
+        %li
+          %a{:href => "#"} Services
+        %li
+          %a{:href => "#"} Contact
+    / /#sidebar-wrapper
+    / Page Content
+    #page-content-wrapper
+      .container-fluid
+        .row
+          .col-lg-12
+            -# %h1 Simple Sidebar
+            -# %p This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.
+            -# %p
+            -#   Make sure to keep all page content within the
+            -#   = succeed "." do
+            -#     %code #page-content-wrapper
+            = yield
+
+

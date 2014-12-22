@@ -1,8 +1,12 @@
 class DecksController < ApplicationController
   before_action :set_deck, only: [:show, :edit, :update, :destroy]
-
+  layout 'vcdash'
   # GET /decks
   # GET /decks.json
+
+
+
+
   def index
     @decks = Deck.all
   end

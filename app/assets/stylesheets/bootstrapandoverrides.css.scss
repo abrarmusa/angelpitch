@@ -6,4 +6,50 @@
   font-size: 24px;
   line-height: 20px;
   height: 50px;
+
+}
+
+h1.navbar-brand {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+.navbar-default {
+  background-color: white !important;
+  border-color: white;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.26);
+}
+
+.navbar-default .navbar-brand {
+  color: black !important;
+}
+
+.table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  padding-top: 20px;
+}
+
+.image {
+  padding-top: 5px !important;
+}
+
+.button {
+  padding-top: 4px !important;
+}
+
+.h1 .h2 .h3 .h4 .h5 p {
+  color:black;
+}
+
+.centerize {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.padder {
+  padding-top: 50px;
+}
+
+.siliconbackground {
+  background-image: image-url("back1.jpg");
+  /*background-size: 150% cover;*/
 }
