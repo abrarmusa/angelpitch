@@ -16,3 +16,7 @@
 //= require bootstrap-material-design
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+  $.material.init();
+});

@@ -1,5 +1,5 @@
 
-= simple_form_for @individual, remote: true do |f|
+= simple_form_for @individual do |f|
   .modal-body
     .form-horizontal
       = f.error_notification
@@ -12,4 +12,5 @@
         = v.hidden_field :meta_type, default: "Individual"
 
   .modal-footer
-    .centerize= f.button :submit, class: "btn btn-primary"
+    .centerize= f.button :submit, placeholder: 'Enter name', class: "btn btn-primary"
+

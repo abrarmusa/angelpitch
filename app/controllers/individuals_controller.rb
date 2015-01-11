@@ -1,9 +1,14 @@
 class IndividualsController < ApplicationController
   before_action :set_individual, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except:[:new, :create]
+  before_filter :check_privileges!, except:[:new, :create]
 
-  respond_to :html
+  layout "application"
 
   def index
+    @person = Individual.find_by(id: current_user.meta_id)
+    Rails.logger.info ">>>>>>>>>>>>>>>>> #{@person} <<<<<<<<<<<<<<<<<<<<"
+    @decks = @person.decks.all
   end
 
   def show
@@ -22,9 +27,12 @@ class IndividualsController < ApplicationController
 
   def create
     @individual = Individual.new(individual_params)
-    @individual.save
     respond_to do |format|
-      format.js
+      if @individual.save
+        format.html {redirect_to new_user_session_path }
+      else
+        flash[:notice] = "Please fix errors"
+      end
     end
   end
 
@@ -46,4 +54,9 @@ class IndividualsController < ApplicationController
     def individual_params
       params.require(:individual).permit(:name, :avatar, user_attributes: [ :id, :email, :name, :password ])
     end
+
+    def check_privileges!
+      redirect_to investors_path, notice: 'You dont have enough permissions to be here' unless current_user.meta_type == "Individual"
+    end
+
 end

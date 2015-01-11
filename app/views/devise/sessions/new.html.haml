@@ -1,0 +1,15 @@
+.container
+  %br
+  %br
+  .well.padding-40-both-sides
+    %h2.centerize Log in
+    %br
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-horizontal
+
+        = f.input :email
+        = f.input :password
+        - if devise_mapping.rememberable?
+          = f.input :remember_me, as: :boolean
+        = f.submit "Log in", class: "btn btn-md btn-primary btn-raised"
+      = render "devise/shared/links"

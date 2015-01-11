@@ -6,19 +6,13 @@ class DecksController < ApplicationController
 
 
 
-
-  def index
-    @decks = Deck.all
-  end
-
-  # GET /decks/1
-  # GET /decks/1.json
-  def show
-  end
-
-  # GET /decks/new
   def new
-    @deck = Deck.new
+    @person = Individual.find_by(id: current_user.meta_id)
+    @deck = @person.decks.new
+    respond_to do |format|
+      format.js
+    end
+
   end
 
   # GET /decks/1/edit
@@ -28,15 +22,15 @@ class DecksController < ApplicationController
   # POST /decks
   # POST /decks.json
   def create
-    @deck = Deck.new(deck_params)
-
+    @person = Individual.find_by(id: current_user.meta_id)
+    @deck = @person.decks.new(deck_params)
+    @deck.individual = Individual.find_by(id: current_user.meta_id)
+    @decks = @person.decks.all
     respond_to do |format|
       if @deck.save
-        format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
-        format.json { render :show, status: :created, location: @deck }
+        format.js
       else
-        format.html { render :new }
-        format.json { render json: @deck.errors, status: :unprocessable_entity }
+        Rails.logger.info "FAILEDFAILEDFAILEDFAILEDFAILEDFAILEDFAILEDFAILED"
       end
     end
   end

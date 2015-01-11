@@ -1,16 +1,14 @@
-= form_for @investor do |f|
-  - if @investor.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@investor.errors.count, "error")} prohibited this investor from being saved:"
-      %ul
-        - @investor.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for @investor do |f|
+  .modal-body
+    .form-horizontal
+      = f.error_notification
+      = f.input :name, placeholder: 'Enter name'
+      = f.input :avatar, placeholder: 'Upload Photo'
+      = f.fields_for :user_attributes, @investor.user||User.new do |v|
+        = v.input :email, placeholder: 'Email'
+        = v.input :password, placeholder: 'Password'
+        = v.input :password_confirmation, placeholder: 'Confirm Password'
+        = v.hidden_field :meta_type, default: "Individual"
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .actions
-    = f.submit 'Save'
+  .modal-footer
+    .centerize= f.button :submit, class: "btn btn-primary btn-default"

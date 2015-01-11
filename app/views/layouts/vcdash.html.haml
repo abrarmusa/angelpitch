@@ -25,48 +25,34 @@
       / Top Menu Items
       %ul.nav.navbar-right.top-nav
         %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#",style: "padding-top:25px!important;padding-bottom:25px!important;"}
             %i.fa.fa-user
-            John Smith
+              = @person.name
             %b.caret
           %ul.dropdown-menu
+            -# %li
+            -#   %a{:href => "#"}
+            -#     %i.fa.fa-fw.fa-gear
+            -#     Settings
+            -# %li.divider
             %li
-              %a{:href => "#"}
-                %i.fa.fa-fw.fa-user
-                Profile
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-fw.fa-envelope
-                Inbox
-            %li
-              %a{:href => "#"}
-                %i.fa.fa-fw.fa-gear
-                Settings
-            %li.divider
-            %li
-              %a{:href => "#"}
+              = link_to destroy_user_session_path, :method => :delete do
                 %i.fa.fa-fw.fa-power-off
                 Log Out
+
     / Sidebar
     #sidebar-wrapper
       %ul.sidebar-nav
         %li.sidebar-brand
-          %a{:href => "#"}
-            Start Bootstrap
-        %li
-          %a{:href => "#"} Dashboard
-        %li
-          %a{:href => "#"} Shortcuts
-        %li
-          %a{:href => "#"} Overview
-        %li
-          %a{:href => "#"} Events
-        %li
-          %a{:href => "#"} About
-        %li
-          %a{:href => "#"} Services
-        %li
-          %a{:href => "#"} Contact
+          Dashboard
+        - if current_user.meta_type == "Investor"
+          %li
+            %a{:href => "#"} Pending Decks
+          %li
+            %a{:href => "#"} Viewed Decks
+          %li
+            %a{:href => "#"} Request a Deck
+
     / /#sidebar-wrapper
     / Page Content
     #page-content-wrapper

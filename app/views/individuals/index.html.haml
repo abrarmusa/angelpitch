@@ -1,23 +1,35 @@
-%h1 Listing individuals
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Email
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @individuals.each do |individual|
-      %tr
-        %td= individual.name
-        %td= individual.email
-        %td= link_to 'Show', individual
-        %td= link_to 'Edit', edit_individual_path(individual)
-        %td= link_to 'Destroy', individual, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
 %br
+.container-fluid
+  .col-md-10.hidden-xs
+    %h1 DECKS
+  .col-md-2.hidden-xs
+    = link_to new_individual_deck_path(@person), { remote: true, "data-toggle" => "modal", "data-target" => "#deckmodal"}  do
+      .btn.btn-success.btn-raised
+        New Deck
+        = image_tag("card.png", width: "25")
+  .visible-xs.col-xs-12
+    %h1.centerize DECKS
+  .visible-xs.col-xs-12
+    .centerize
+      = link_to new_individual_deck_path(@person), { remote: true, "data-toggle" => "modal", "data-target" => "#deckmodal"}  do
+        .btn.btn-success.btn-raised
+          New Deck
+          = image_tag("card.png", width: "25")
+.container-fluid
+  %br
+  %table.table.table-condensed.table-hover
+    %thead
+      %tr
+        %th #
+        %th.hidden-xs.hidden-sm
+        %th Contact Name
+        %th.hidden-xs.hidden-sm
+        %th Company Description
+        %th Fund Requirement
+        %th Deck
+        %th
+    %tbody
+      #deckblock
+        =render "decks"
 
-= link_to 'New Individual', new_individual_path
+=render "decks/deckmodal"

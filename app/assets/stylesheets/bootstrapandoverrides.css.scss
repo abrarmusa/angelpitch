@@ -23,6 +23,10 @@ h1.navbar-brand {
   color: black !important;
 }
 
+.padding-40-both-sides {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
 .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
   padding-top: 20px;
 }
@@ -31,8 +35,15 @@ h1.navbar-brand {
   padding-top: 5px !important;
 }
 
+a:hover {
+color: red !important;
+}
 .button {
   padding-top: 4px !important;
+}
+
+.checkbox input[type=checkbox] {
+opacity: 1 !important;
 }
 
 .h1 .h2 .h3 .h4 .h5 p {
@@ -53,4 +64,17 @@ h1.navbar-brand {
 a:hover {
 color: #fff;
  background-color: rgba(0, 0, 0, 0) !important; 
+}
+
+.btn-default {
+  color:black !important;
+}
+
+.siliconbackground {
+  background: url("sf.jpg") no-repeat center center fixed;
+  background-size: auto 100%;
+}
+
+.transback {
+  background-color: rgba(255,255,255, 0.9);
 }

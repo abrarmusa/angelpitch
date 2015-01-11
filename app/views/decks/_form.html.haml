@@ -1,0 +1,10 @@
+= simple_form_for @deck,{ remote: true} do |f|
+  .modal-body
+    .form-horizontal
+      = f.input :title
+      = f.file_field :logo
+      = f.input :description
+      = f.input :amount
+      = f.file_field :pitch
+  .modal-footer
+    .centerize= f.submit

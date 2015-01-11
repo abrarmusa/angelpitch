@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  resources :investors
+  resources :investors 
 
-  resources :individuals
+  resources :individuals do
+    resources :decks
+  end
 
   devise_for :users
+  as :user do
+    get 'sign_in', :to => 'devise/sessions#new'
+  end
   resources :decks
 
   # The priority is based upon order of creation: first created -> highest priority.
