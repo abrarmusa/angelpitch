@@ -1,7 +1,7 @@
 class IndividualsController < ApplicationController
   before_action :set_individual, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except:[:new, :create]
-  before_filter :check_privileges!, except:[:new, :create]
+  before_filter :check_privileges!, only:[:index]
 
   layout "application"
 

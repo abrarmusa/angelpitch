@@ -1,6 +1,7 @@
 class DecksController < ApplicationController
   before_action :set_deck, only: [:show, :edit, :update, :destroy]
   layout 'vcdash'
+  before_action :authenticate_user!
   # GET /decks
   # GET /decks.json
 
@@ -23,6 +24,7 @@ class DecksController < ApplicationController
   # POST /decks.json
   def create
     @person = Individual.find_by(id: current_user.meta_id)
+    Rails.logger.info ">>>>>>>>>>>>>>>>>>> #{@person.id} <<<<<<<<<<<<<<<<<<"
     @deck = @person.decks.new(deck_params)
     @deck.individual = Individual.find_by(id: current_user.meta_id)
     @decks = @person.decks.all
@@ -67,6 +69,6 @@ class DecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deck_params
-      params.require(:deck).permit(:title, :description, :amount, :pitch)
+      params.require(:deck).permit(:title, :description, :amount, :pitch, :logo)
     end
 end

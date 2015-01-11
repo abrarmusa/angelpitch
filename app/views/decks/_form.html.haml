@@ -1,10 +1,14 @@
-= simple_form_for @deck,{ remote: true} do |f|
+= simple_form_for [@deck], html: {class: 'dropzone', multipart: true} , remote: true do |f|
   .modal-body
     .form-horizontal
       = f.input :title
-      = f.file_field :logo
+      .form-group
+        %label Logo
+        = f.file_field :logo, class: "dropzone"
       = f.input :description
       = f.input :amount
-      = f.file_field :pitch
+      .form-group
+        %label Deck
+        = f.file_field :pitch, class: "dropzone"
   .modal-footer
     .centerize= f.submit

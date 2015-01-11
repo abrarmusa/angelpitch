@@ -13,6 +13,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
 gem 'paperclip'
+gem 'dropzonejs-rails'
+gem "jquery-fileupload-rails"
 gem 'haml-rails'
 gem 'bootstrap-material-design'
 gem 'devise'
