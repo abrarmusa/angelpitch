@@ -1,10 +1,22 @@
-- @decks.each do |deck|
-  %tr
-    %td
-    %td
-    %td= deck.title
-    %td
-    %td= deck.description
-    %td= deck.amount
-    %td Deck
-    %td
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th #
+      %th.hidden-xs.hidden-sm
+      %th Contact Name
+      %th.hidden-xs.hidden-sm
+      %th Company Description
+      %th Fund Requirement
+      %th Deck
+      %th
+  %tbody
+    - @decks.each do |deck|
+      %tr
+        %td
+        %td
+        %td= deck.title
+        %td
+        %td= deck.description
+        %td= deck.amount
+        %td Deck
+        %td

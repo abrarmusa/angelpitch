@@ -17,19 +17,6 @@
           = image_tag("card.png", width: "25")
 .container-fluid
   %br
-  %table.table.table-condensed.table-hover
-    %thead
-      %tr
-        %th #
-        %th.hidden-xs.hidden-sm
-        %th Contact Name
-        %th.hidden-xs.hidden-sm
-        %th Company Description
-        %th Fund Requirement
-        %th Deck
-        %th
-    %tbody
-      #deckblock
-        =render "decks"
+  #deckblock=render "decks"
 
 =render "decks/deckmodal"
