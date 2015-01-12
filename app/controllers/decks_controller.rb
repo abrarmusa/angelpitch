@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  before_action :set_deck, only: [:show, :edit, :update, :destroy]
+  before_action :set_deck, only: [:show, :edit, :update, :destroy, :sharedeck, :deckshared]
   layout 'vcdash'
   before_action :authenticate_user!
   # GET /decks
@@ -18,6 +18,36 @@ class DecksController < ApplicationController
 
   # GET /decks/1/edit
   def edit
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def sharedeck
+    @shared_deck = @person.shared_decks.new
+    @individual = Individual.find_by(id: current_user.meta_id)
+    @investors = Investor.all
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def deckshared
+    @shareddeck = @person.shared_decks.new(sharedeck_params)
+    @shareddeck.deck_id = @deck.id
+    respond_to do |format|
+      if @shareddeck.save
+        format.js
+      else
+        Rails.logger.info "FAILEDFAILEDFAILEDFAILEDFAILEDFAILEDFAILEDFAILED"
+      end
+    end
   end
 
   # POST /decks
@@ -42,11 +72,9 @@ class DecksController < ApplicationController
   def update
     respond_to do |format|
       if @deck.update(deck_params)
-        format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
-        format.json { render :show, status: :ok, location: @deck }
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @deck.errors, status: :unprocessable_entity }
+        format.js { render :edit }
       end
     end
   end
@@ -54,21 +82,27 @@ class DecksController < ApplicationController
   # DELETE /decks/1
   # DELETE /decks/1.json
   def destroy
-    @deck.destroy
-    respond_to do |format|
-      format.html { redirect_to decks_url, notice: 'Deck was successfully destroyed.' }
-      format.json { head :no_content }
+    if @deck.destroy
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_deck
-      @deck = Deck.find(params[:id])
+      @person = Individual.find_by(id: current_user.meta_id)
+      @decks = @person.decks.all
+      @deck = @decks.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deck_params
       params.require(:deck).permit(:title, :description, :amount, :pitch, :logo)
+    end
+
+    def sharedeck_params
+      params.require(:shared_deck).permit(:investor_id)
     end
 end

@@ -35,9 +35,7 @@ h1.navbar-brand {
   padding-top: 5px !important;
 }
 
-a:hover {
-color: red !important;
-}
+
 .button {
   padding-top: 4px !important;
 }
@@ -60,14 +58,12 @@ opacity: 1 !important;
   padding-top: 50px;
 }
 
-
-a:hover {
-color: #fff;
- background-color: rgba(0, 0, 0, 0) !important; 
+.nomargtop {
+  margin-top:0px;
 }
 
 .btn-default {
-  color:black !important;
+  color:white !important;
 }
 
 .siliconbackground {
@@ -83,7 +79,15 @@ color: #fff;
   min-height: 200px !important;
 }
 
-.dropzone {
-  min-height: 100px;
-  min-width: 100%;
+.imgsize {
+  max-width:35px;
+  max-height:35px;
+}
+
+.modal-lg.deckmodal {
+    width: 95% !important;
+}
+
+.bodybasic {
+  margin-top: 70px;
 }

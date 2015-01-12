@@ -12,24 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require dropzone
+//= require jquery.remotipart
 //= require bootstrap
+//= require jasny-bootstrap.min
 //= require bootstrap-material-design
-//= require jquery-fileupload
 //= require turbolinks
 //= require_tree .
 
 $(function(){
   $.material.init();
-
 });
-
-$(document).ready(function() {
-  Dropzone.autoDiscover = false;
-  return $("#new_deck").dropzone({
-    maxFilesize: 1,
-    paramName: "deck[logo]",
-    addRemoveLinks: true
-  });
-});
-

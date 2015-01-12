@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111081247) do
+ActiveRecord::Schema.define(version: 20150112060746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "decks", force: :cascade do |t|
-    t.text     "title"
-    t.text     "description"
+    t.string   "title"
+    t.string   "description"
     t.float    "amount"
     t.string   "pitch_file_name"
     t.string   "pitch_content_type"
@@ -55,6 +55,19 @@ ActiveRecord::Schema.define(version: 20150111081247) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "shared_decks", force: :cascade do |t|
+    t.integer  "deck_id"
+    t.integer  "investor_id"
+    t.integer  "individual_id"
+    t.boolean  "pending"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "shared_decks", ["deck_id"], name: "index_shared_decks_on_deck_id", using: :btree
+  add_index "shared_decks", ["individual_id"], name: "index_shared_decks_on_individual_id", using: :btree
+  add_index "shared_decks", ["investor_id"], name: "index_shared_decks_on_investor_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -77,4 +90,6 @@ ActiveRecord::Schema.define(version: 20150111081247) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "decks", "individuals"
+  add_foreign_key "shared_decks", "individuals"
+  add_foreign_key "shared_decks", "investors"
 end

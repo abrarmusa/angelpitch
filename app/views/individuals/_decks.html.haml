@@ -1,22 +1,39 @@
-%table.table.table-condensed.table-hover
+%table.table.table-condensed.table-striped.table-hover
   %thead
     %tr
       %th #
       %th.hidden-xs.hidden-sm
-      %th Contact Name
-      %th.hidden-xs.hidden-sm
-      %th Company Description
+      %th Company
       %th Fund Requirement
       %th Deck
       %th
+      %th
+      %th
   %tbody
-    - @decks.each do |deck|
+    - @decks.each_with_index do |deck, i|
       %tr
         %td
+          %h4= i + 1
+        %td.hidden-xs.hidden-sm
+          =image_tag deck.logo.url, :class => "img-responsive img-circle imgsize"
         %td
-        %td= deck.title
+          %h4.nomargtop
+            %strong= deck.title
+          = deck.description
         %td
-        %td= deck.description
-        %td= deck.amount
-        %td Deck
+          $
+          = deck.amount
         %td
+          = link_to individual_deck_path(@person, deck), { remote: true, "data-toggle" => "modal", "data-target" => "#deckmodalshow"} do
+            .hidden-xs.hidden-sm=deck.pitch_file_name
+            .visible-xs.visible-sm=image_tag("show.png", width:"30px;")
+        %td
+          = link_to edit_individual_deck_path(@person, deck), { remote: true, "data-toggle" => "modal", "data-target" => "#deckmodaledit"} do
+            %i.fa.fa-pencil
+        %td
+          = link_to individual_deck_path(@person, deck) , :method => :delete, :data => { :confirm => 'Are you sure?' },remote: true do
+            %i.fa.fa-trash
+        %td
+          = link_to sharedeck_individual_deck_path(@person, deck), { remote: true, "data-toggle" => "modal", "data-target" => "#deckmodalshare"} do
+            %i.fa.fa-share
+

@@ -1,0 +1,6 @@
+.modal-content{style: "width:100%;"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+    %h3.centerize#deck-modal.modal-title Preview
+  .modal-body
+    %iframe{:frameborder => "0", :src => "https://docs.google.com/viewer?url=#{URI.escape(@deck.pitch.url)}&embedded=true", :style => "width:100%; height:500px;"}

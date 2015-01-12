@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deck_id: 
+  investor_id: 
+  pending: false
+
+two:
+  deck_id: 
+  investor_id: 
+  pending: false

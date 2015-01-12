@@ -3,7 +3,7 @@ class IndividualsController < ApplicationController
   before_action :authenticate_user!, except:[:new, :create]
   before_filter :check_privileges!, only:[:index]
 
-  layout "application"
+  layout "indidash"
 
   def index
     @person = Individual.find_by(id: current_user.meta_id)
@@ -24,6 +24,7 @@ class IndividualsController < ApplicationController
 
   def edit
   end
+
 
   def create
     @individual = Individual.new(individual_params)
@@ -47,6 +48,7 @@ class IndividualsController < ApplicationController
   end
 
   private
+
     def set_individual
       @individual = Individual.find(params[:id])
     end

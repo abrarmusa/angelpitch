@@ -1,14 +1,40 @@
-= simple_form_for [@deck], html: {class: 'dropzone', multipart: true} , remote: true do |f|
+= simple_form_for [@deck], remote: true do |f|
   .modal-body
     .form-horizontal
-      = f.input :title
-      .form-group
-        %label Logo
-        = f.file_field :logo, class: "dropzone"
-      = f.input :description
-      = f.input :amount
-      .form-group
-        %label Deck
-        = f.file_field :pitch, class: "dropzone"
+      = f.input :title, label: "Company Name", placeholder: "Please enter the name of your company"
+      = f.input :logo,label:false do |pic|
+        .row
+          %label{style:"margin-left:15px !important;"} Logo
+        .fileinput.fileinput-new{"data-provides" => "fileinput"}
+          .fileinput-new.thumbnail{:style => "width: 100px; height: 100px;"}
+            %img{:alt => "...", "src" => "http://placehold.it/100x100"}/
+          .fileinput-preview.fileinput-exists.thumbnail{:style => "max-width: 200px; max-height: 150px;"}
+          %div
+            %span.btn.btn-primary.btn-sm.btn-raised.btn-file
+              %span.fileinput-new Select image
+              %span.fileinput-exists Change
+              = f.file_field :logo, label: false
+            %a.btn.btn-default.btn-warning.btn-raised.btn-sm.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Remove
+
+      = f.input :description, placeholder: "Briefly describe your product"
+      = f.input :amount, placeholder: "What is your funding requirement?"
+      = f.input :pitch,label:false do |pitch|
+        .row
+          %label{style:"margin-left:15px !important;"} Pitch
+        .fileinput.fileinput-new{"data-provides" => "fileinput"}
+          %span.btn.btn-primary.btn-sm.btn-raised.btn-file
+            %span.fileinput-new Select file
+            %span.fileinput-exists Change
+            &nbsp;
+            &nbsp;
+            = f.file_field :pitch, label: false
+            &nbsp;
+            &nbsp;
+          %span.fileinput-filename
+          %a.close.btn.fileinput-exists{"data-dismiss" => "fileinput", :href => "#", :style => "float: none"} &#215;
+          
   .modal-footer
-    .centerize= f.submit
+    .centerize
+      = f.button :submit, class: "btn btn-primary btn-raised"
+
+

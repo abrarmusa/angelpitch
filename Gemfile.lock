@@ -37,6 +37,11 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    aws-sdk (1.55.0)
+      aws-sdk-v1 (= 1.55.0)
+    aws-sdk-v1 (1.55.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.9)
     bootstrap-material-design (0.1.4)
       bootstrap-sass (~> 3.0)
@@ -88,9 +93,6 @@ GEM
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jquery-fileupload-rails (0.4.2)
-      actionpack (>= 3.1)
-      railties (>= 3.1)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -143,6 +145,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    remotipart (1.2.1)
     responders (2.0.2)
       railties (>= 4.2.0.alpha, < 5)
     ruby_parser (3.1.3)
@@ -187,6 +190,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   bootstrap-material-design
   bootstrap-sass
   coffee-rails (~> 4.0.0)
@@ -195,11 +199,11 @@ DEPENDENCIES
   font-awesome-rails
   haml-rails
   jbuilder (~> 2.0)
-  jquery-fileupload-rails
   jquery-rails
   paperclip
   pg
   rails
+  remotipart
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form

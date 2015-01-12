@@ -14,10 +14,11 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'bootstrap-sass'
 gem 'paperclip'
 gem 'dropzonejs-rails'
-gem "jquery-fileupload-rails"
+gem "remotipart"
 gem 'haml-rails'
 gem 'bootstrap-material-design'
 gem 'devise'
+gem 'aws-sdk'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 

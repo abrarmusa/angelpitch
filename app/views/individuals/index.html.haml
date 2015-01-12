@@ -3,8 +3,8 @@
   .col-md-10.hidden-xs
     %h1 DECKS
   .col-md-2.hidden-xs
-    = link_to new_individual_deck_path(@person), { remote: true, "data-toggle" => "modal", "data-target" => "#deckmodal"}  do
-      .btn.btn-success.btn-raised
+    = link_to new_individual_deck_path(@person), {class: "whitehover", remote: true, "data-toggle" => "modal", "data-target" => "#deckmodal"}  do
+      .btn.btn-success.btn-raised.whitehover.pull-right
         New Deck
         = image_tag("card.png", width: "25")
   .visible-xs.col-xs-12

@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   resources :investors 
 
   resources :individuals do
-    resources :decks
+    resources :decks do
+      member do
+        get "sharedeck"
+        post "/sharedeck", to: "decks#deckshared"
+      end
+    end
   end
 
   devise_for :users

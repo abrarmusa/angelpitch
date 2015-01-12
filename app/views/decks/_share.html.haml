@@ -1,0 +1,12 @@
+.modal-content{style: "width:100%;"}
+  = simple_form_for @shared_deck, :url => sharedeck_individual_deck_path(@individual, @deck), :method => :post, remote: true do |f|
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+      %h3.centerize#deck-modal.modal-title Share Deck
+    .modal-body
+      = f.input :investor_id,:collection => @investors,:value_method => :id,:label => "Investor" ,:include_blank => false
+    .modal-footer
+      .centerize
+        = f.button :submit, "Share Deck",class: "btn btn-primary btn-raised"
+
+
