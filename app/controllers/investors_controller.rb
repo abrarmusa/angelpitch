@@ -6,7 +6,9 @@ class InvestorsController < ApplicationController
 
   def index
     @person = Investor.find_by(id: current_user.meta_id)
-    Rails.logger.info ">>>>>>>>>>>>>>>>> #{@person} <<<<<<<<<<<<<<<<<<<<"
+    @deck_ids = SharedDeck.where(investor_id: @person.id).map(&:deck_id)
+    @decks = Deck.where(id: @deck_ids)
+    Rails.logger.info ">>>>>>>>>>>>>>>>> #{@decks.each do |a| a.title end} <<<<<<<<<<<<<<<<<<<<"
   end
 
   def show
