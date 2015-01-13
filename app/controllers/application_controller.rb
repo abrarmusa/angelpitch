@@ -5,9 +5,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   def signup
+    if user_signed_in?
+      redirect_to redirect_to individuals_path
+    end
   end
 
   def homepage
+    if user_signed_in?
+      @person = current_user
+    end
   end
 
 

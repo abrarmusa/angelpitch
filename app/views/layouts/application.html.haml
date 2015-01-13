@@ -25,10 +25,22 @@
             = image_tag("logo.png", width: "50", style: "float:left;margin-left:15px;padding-top:15px;padding-bottom:15px;padding-left:15px;")
             %h1.navbar-brand ANGELPITCH
         %ul.nav.navbar-right.top-nav
-          %li
-            = link_to new_user_session_path do
-              %i.fa.fa-sign-in{style: "padding-top:25px!important;padding-right:25px!important;padding-bottom:25px!important;"}
-                Sign In
+          - if user_signed_in?
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#",style: "padding-top:25px!important;padding-bottom:25px!important;"}
+                %i.fa.fa-user
+                  = @person.name
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to destroy_user_session_path, :method => :delete do
+                    %i.fa.fa-fw.fa-power-off
+                    Log Out
+          - else
+            %li
+              = link_to new_user_session_path do
+                %i.fa.fa-sign-in{style: "padding-top:25px!important;padding-right:25px!important;padding-bottom:25px!important;"}
+                  Sign In
 
       / Sidebar
     = yield
