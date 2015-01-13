@@ -8,14 +8,14 @@
       %th Company Name
       %th Fund Requirement
       %th Deck
-      %th
   %tbody
     - @decks.each_with_index do |deck, i|
+      -# - if SharedDeck.find_by(deck_id: deck.id).pending == true
       %tr
         %td= i+1
-        %td= (Individual.find_by(id: deck.individual_id)).avatar
+        %td= image_tag (Individual.find_by(id: deck.individual_id)).avatar.url, :class => "img-responsive img-circle imgsize imgsizeminuseight"
         %td= (Individual.find_by(id: deck.individual_id)).name
-        %td= image_tag deck.logo.url
+        %td= image_tag deck.logo.url, :class => "img-responsive img-circle imgsize imgsizeminuseight"
         %td= deck.title
         %td= deck.amount
         %td
