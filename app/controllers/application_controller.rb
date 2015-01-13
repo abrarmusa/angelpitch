@@ -12,7 +12,10 @@ class ApplicationController < ActionController::Base
 
   def homepage
     if user_signed_in?
-      @person = current_user
+      if current_user.meta_type = "Individual"
+        @person = Individual.find_by(id: current_user.meta_id)
+      else
+        @person = Investor.find_by(id: current_user.meta_id)
     end
   end
 
