@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   
   def signup
     if user_signed_in?
-      redirect_to redirect_to individuals_path
+      redirect_to individuals_path
     end
   end
 
