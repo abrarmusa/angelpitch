@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    if current_user.meta_type = "Investor"
+    if current_user.meta_type == "Investor"
       investors_path(current_user)
     else
       individuals_path(current_user)
