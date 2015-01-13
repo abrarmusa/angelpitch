@@ -1,30 +1,138 @@
-.siliconbackground{style:"height:900px"}
-  .container-fluid.padder
-    .container
-      %h1.centerize{style:"color:rgba(255,255,255,0.9)"} Who are you?
-      <br>
-      <br>
-      .col-md-6
-        .panel.transback.panel-default
-          .panel-body.moneybackground
-            .centerize
-              %h2 I am an
-              =link_to new_investor_path, { remote: true, "data-toggle" => "modal", "data-target" => "#investormodal"} do
-                .btn.btn-primary.btn-lg
-                  <br>
-                  Angel
-                  <br><br>
-      .col-md-6
-        .panel.transback.panel-default
-          .panel-body
-            .centerize
-              %h2 I represent a
-              =link_to new_individual_path, { remote: true, "data-toggle" => "modal", "data-target" => "#individualmodal"} do
-                .btn.btn-primary.btn-lg
-                  <br>
-                  Startup
-                  <br><br>
-}
+/ Header
 
-=render "/individuals/individualmodal"
-=render "/investors/investormodal"
+.container-fluid.nomargnopad.sfbackground
+  / Logo
+  .centerize
+
+    = image_tag("Logobig.png", style:"width:10%; margin-top:100px;")
+    %h1.bigfont#logo{:href => "#"} ANGELPITCH
+  / Banner
+
+
+  .container
+    .centerize
+      %section
+        %header.major
+          %h2.fontcolwhite Welcome to ANGELPITCH!
+
+          %span.byline.fontcolwhite
+            \&#8230; a responsive HTML5 site template freebie by
+            = succeed "." do
+              %a{:href => "http://templated.co"} TEMPLATED
+            %a{:href => "http://templated.co/license"} Creative Commons Attribution
+            license, so use it for whatever (personal or commercial) &#8211; just give us credit!
+        = link_to application_signup_path do
+          .btn.btn-success.btn-raised.btn-lg Sign Up
+  .emptyblock
+
+/ Featured
+.wrapper.style2
+%section.container
+  %header.major.centerize
+    %h2 Nulla luctus eleifend
+    %span.byline Mauris vulputate dolor sit amet nibh
+  .row
+    .col-md-4
+      %section.4u
+        %a.image.feature{:href => "#"}
+          %img{:alt => "", :src => "images/pic02.jpg"}/
+        %p Nam in massa. Sed vel tellus. Curabitur sem urna, consequat vel, suscipit in, mattis placerat.
+    .col-md-4
+      %section.4u
+        %a.image.feature{:href => "#"}
+          %img{:alt => "", :src => "images/pic03.jpg"}/
+        %p Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis. Donec magna.
+    .col-md-4
+      %section.4u
+        %a.image.feature{:href => "#"}
+          %img{:alt => "", :src => "images/pic04.jpg"}/
+        %p Curabitur sem urna, consequat vel, suscipit convallis sem leo, mattis placerat, nulla. Sed ac leo.
+/ Main
+#main.wrapper.style1
+  %section.container
+    %header.major
+      %h2 Nulla luctus eleifend
+      %span.byline Mauris vulputate dolor sit amet nibh
+    .row
+      / Content
+      .6u
+        %section
+          %ul.style
+            %li
+              %span.fa.fa-wrench
+              %h3 Integer ultrices
+              %span In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim.
+            %li
+              %span.fa.fa-cloud
+              %h3 Aliquam luctus
+              %span Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.
+      .6u
+        %section
+          %ul.style
+            %li
+              %span.fa.fa-cogs
+              %h3 Integer ultrices
+              %span In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim.
+            %li
+              %span.fa.fa-leaf
+              %h3 Aliquam luctus
+              %span Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.
+/ Footer
+#footer
+  .container
+    / Lists
+    .row
+      .8u
+        %section
+          %header.major
+            %h2 Donec dictum metus
+            %span.byline Quisque semper augue mattis wisi maecenas ligula
+          .row
+            %section.6u
+              %ul.default
+                %li
+                  %a{:href => "#"} Pellentesque elit non gravida blandit.
+                %li
+                  %a{:href => "#"} Lorem ipsum dolor consectetuer elit.
+                %li
+                  %a{:href => "#"} Phasellus nibh pellentesque congue.
+                %li
+                  %a{:href => "#"} Cras vitae metus aliquam  pharetra.
+            %section.6u
+              %ul.default
+                %li
+                  %a{:href => "#"} Pellentesque elit non gravida blandit.
+                %li
+                  %a{:href => "#"} Lorem ipsum dolor consectetuer elit.
+                %li
+                  %a{:href => "#"} Phasellus nibh pellentesque congue.
+                %li
+                  %a{:href => "#"} Cras vitae metus aliquam  pharetra.
+      .4u
+        %section
+          %header.major
+            %h2 Donec dictum metus
+            %span.byline Mattis wisi maecenas ligula
+          %ul.contact
+            %li
+              %span.address Address
+              %span
+                1234 Somewhere Road #4285
+                = succeed "Nashville," do
+                  %br/
+            %li
+              %span.mail Mail
+              %span
+                %a{:href => "#"} someone@untitled.tld
+            %li
+              %span.phone Phone
+              %span (000) 000-0000
+    / Copyright
+    .copyright
+      Design:
+      %a{:href => "http://templated.co"} TEMPLATED
+      Images:
+      %a{:href => "http://unsplash.com"} Unsplash
+      (
+      %a{:href => "http://unsplash.com/cc0"}> CC0
+      )

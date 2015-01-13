@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery as: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   
+  def signup
+  end
+
   def homepage
   end
 

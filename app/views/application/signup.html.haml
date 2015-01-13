@@ -1,0 +1,30 @@
+.siliconbackground{style:"height:900px"}
+  .container-fluid.padder
+    .container
+      %h1.centerize{style:"color:rgba(255,255,255,0.9)"} Who are you?
+      <br>
+      <br>
+      .col-md-6
+        .panel.transback.panel-default
+          .panel-body.moneybackground
+            .centerize
+              %h2 I am an
+              =link_to new_investor_path, { remote: true, "data-toggle" => "modal", "data-target" => "#investormodal"} do
+                .btn.btn-primary.btn-lg
+                  <br>
+                  Angel
+                  <br><br>
+      .col-md-6
+        .panel.transback.panel-default
+          .panel-body
+            .centerize
+              %h2 I represent a
+              =link_to new_individual_path, { remote: true, "data-toggle" => "modal", "data-target" => "#individualmodal"} do
+                .btn.btn-primary.btn-lg
+                  <br>
+                  Startup
+                  <br><br>
+}
+
+=render "/individuals/individualmodal"
+=render "/investors/investormodal"
