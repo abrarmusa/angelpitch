@@ -1,3 +1,7 @@
 development:
   access_key_id: AKIAIORZWRSSP6IREV4Q
   secret_access_key: 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
+
+production:
+  access_key_id: AKIAIORZWRSSP6IREV4Q
+  secret_access_key: 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
