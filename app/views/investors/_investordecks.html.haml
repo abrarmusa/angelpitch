@@ -1,0 +1,102 @@
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th #
+      %th.hidden-xs.hidden-sm
+      %th Contact Name
+      %th.hidden-xs.hidden-sm
+      %th Company Name
+      %th Fund Requirement
+      %th Deck
+      %th
+  %tbody
+    - @decks.each_with_index do |deck, i|
+      %tr
+        %td= i+1
+        %td= (Individual.find_by(id: deck.individual_id)).avatar
+        %td= (Individual.find_by(id: deck.individual_id)).name
+        %td= image_tag deck.logo.url
+        %td= deck.title
+        %td= deck.amount
+        %td
+          = link_to individual_deck_path((Individual.find_by(id: deck.individual_id)), deck), { remote: true, "data-toggle" => "modal", "data-target" => "#deckmodalshow"} do
+            .hidden-xs.hidden-sm=deck.pitch_file_name
+            .visible-xs.visible-sm=image_tag("show.png", width:"30px;")
+
+    -#     %tr
+    -#       %td 1
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag  "hoover.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Ryan Hoover
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag "producthunt.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Product Hunt
+    -#       %td USD 10000000
+    -#       %td slideshow.jpg
+    -#       %td.button
+    -#         %a.btn.btn-primary{:href => "#"} Primary
+
+    -#     %tr
+    -#       %td 2
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag  "travis.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Travis Kalanic
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag "uber.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td UBER
+    -#       %td USD 100000000000
+    -#       %td slideshow.jpg
+    -#       %      %td.button
+    -#         %button.btn.btn-danger
+    -#           %i.mdi-action-delete
+    -#     %tr
+    -#       %td 3
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag  "sqfound.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Jack Dorsey
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag "square.png",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Square
+    -#       %td USD 10000000
+    -#       %td slideshow.jpg
+    -#       %td.button
+    -#         %button.btn.btn-danger
+    -#           %i.mdi-action-delete
+    -#     %tr
+    -#       %td 1
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag  "hoover.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Ryan Hoover
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag "producthunt.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Product Hunt
+    -#       %td USD 10000000
+    -#       %td slideshow.jpg
+    -#       %td.button
+    -#         %i.btn.btn-warning.mdi-action-delete
+    -#     %tr
+    -#       %td 2
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag  "travis.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Travis Kalanic
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag "uber.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td UBER
+    -#       %td USD 100000000000
+    -#       %td slideshow.jpg
+    -#       %td.button
+    -#         %button.btn.btn-danger
+    -#           %i.mdi-action-delete
+    -#     %tr
+    -#       %td 3
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag  "sqfound.jpeg",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Jack Dorsey
+    -#       %td.hidden-xs.hidden-sm.image
+    -#         =image_tag "square.png",:style => "max-width:50px", :class => "img-responsive img-circle"
+    -#       %td Square
+    -#       %td USD 10000000
+    -#       %td slideshow.jpg
+    -#       %td.button
+    -#         %button.btn.btn-danger
+    -#           %i.mdi-action-delete
