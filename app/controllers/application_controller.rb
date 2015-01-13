@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
         @person = Individual.find_by(id: current_user.meta_id)
       else
         @person = Investor.find_by(id: current_user.meta_id)
+      end
     end
   end
 
